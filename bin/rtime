@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require 'thor'
+
+module RTime
+  class CLI < Thor
+  end
+end
+
+RTime::CLI.start(ARGV)
