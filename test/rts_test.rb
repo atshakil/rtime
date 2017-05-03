@@ -21,6 +21,7 @@ class RTime::RTSTest < Minitest::Test
     assert_equal 2017, year
     assert_equal 04, month
     assert_equal 17, day
+    assert_raises(Exception) { RTime::RTS.send(:_parse_date, "2017047") }
   end
 
   def test_assert_selections_for_coverage_returns_correct_number_of_selections
@@ -31,7 +32,8 @@ class RTime::RTSTest < Minitest::Test
   end
 
   def test_assert_timestamps_in_range_returns_all_the_matching_timestamps
-    range = RTime::RTS.send(:_timestamps_in_range, "20170203", "20170129", 1)
+    range = RTime::RTS.send(:_timestamps_in_range, "20170203", "20170129", {
+      night_only: false})
     assert_instance_of Array, range
     assert_equal 6, range.count
     range.each {|timestamp| assert_instance_of Time, timestamp}
