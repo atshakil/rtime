@@ -29,12 +29,17 @@ rtime <start_date> <end_date> <coverage> [--night-only]
 ```
 
 Here's an example use case:
+
 ```sh
-$ rtime 20170127 20170130 100% --night
-2017-01-27 20:48:48 +0000
-2017-01-28 03:51:15 +0000
-2017-01-29 01:15:47 +0000
-2017-01-30 23:41:54 +0000
+$ rtime 20170127 20170203 60% --night
+
+2017-01-28 20:48:48 +0000
+
+2017-01-29 03:51:15 +0000
+
+2017-01-31 01:15:47 +0000
+
+2017-02-03 23:41:54 +0000
 ```
 
 ## Contributing
@@ -43,4 +48,4 @@ If you are interested in contributing, please [submit a pull request](https://he
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT).
+[MIT](http://opensource.org/licenses/MIT)

@@ -1,6 +1,9 @@
+# The primary module for `rtime`
 module RTime
+  # `RTS` implements random timestamp generator API
   class RTS
     class << self
+      # Returns a time segment specific to the provided options
       def _time_for options
         hour = if options[:night_only]
           ((20..23).to_a + (0..5).to_a).sample
@@ -14,6 +17,9 @@ module RTime
         [hour, minute, second]
       end
 
+      # Parses date from `YYYYMMDD` format
+      #
+      # Returns a time segment
       def _parse_date date
         match = /^(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})$/.match date
         if match
@@ -27,10 +33,13 @@ module RTime
         end
       end
 
+      # Returns a count that can be selected from the total count for a
+      # specified coverage
       def _selections_for_coverage total, coverage
         (total.to_f * coverage).to_i
       end
 
+      # Returns all the timestamp in a range
       def _timestamps_in_range date1, date2, options
         year, month, day = self._parse_date date1
         date1 = Time.new year, month, day
@@ -50,6 +59,7 @@ module RTime
         range
       end
 
+      # Returns a specified percentage of random timestamp in a range
       def timestamps(date1, date2, coverage, options={night_only: false})
         all_timestamps = self._timestamps_in_range date1, date2, options
         selection_count = self._selections_for_coverage all_timestamps.count,
