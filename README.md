@@ -31,7 +31,7 @@ rtime <start_date> <end_date> <coverage> [--night-only]
 Here's an example use case:
 
 ```sh
-$ rtime 20170127 20170203 60% --night
+$ rtime generate 20170127 20170203 60% --night
 
 2017-01-28 20:48:48 +0000
 
