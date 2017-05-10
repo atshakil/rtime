@@ -64,7 +64,7 @@ module RTime
         all_timestamps = self._timestamps_in_range date1, date2, options
         selection_count = self._selections_for_coverage all_timestamps.count,
           coverage
-        all_timestamps.sample selection_count
+        all_timestamps.sample(selection_count).sort
       end
     end
   end
