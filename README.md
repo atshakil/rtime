@@ -25,13 +25,13 @@ And then execute:
 ## Usage
 
 ```sh
-rtime <start_date> <end_date> <coverage> [--night-only]
+rtime generate <start_date> <end_date> <coverage> [--night-only]
 ```
 
 Here's an example use case:
 
 ```sh
-$ rtime generate 20170127 20170203 60% --night
+$ rtime g 20170127 20170203 60% --night
 
 2017-01-28 20:48:48 +0000
 
