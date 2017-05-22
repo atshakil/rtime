@@ -1,5 +1,9 @@
 # RTime
 
+[![Build Status](https://travis-ci.org/at-shakil/rtime.svg?branch=master)](https://travis-ci.org/at-shakil/rtime)
+
+## Summary
+
 RTime is a random timestamp generator.
 
 ## Installation
