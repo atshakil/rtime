@@ -1,6 +1,12 @@
 # RTime
 
 [![Build Status](https://travis-ci.org/at-shakil/rtime.svg?branch=master)](https://travis-ci.org/at-shakil/rtime)
+[![Gem Version](https://badge.fury.io/rb/rtime.svg)](https://badge.fury.io/rb/rtime)
+[![Dependency Status](https://gemnasium.com/badges/github.com/at-shakil/rtime.svg)](https://gemnasium.com/github.com/at-shakil/rtime)
+[![Test Coverage](https://codeclimate.com/github/at-shakil/rtime/badges/coverage.svg)](https://codeclimate.com/github/at-shakil/rtime/coverage)
+[![Inline docs](http://inch-ci.org/github/at-shakil/rtime.svg?branch=master)](http://inch-ci.org/github/at-shakil/rtime)
+[![Code Climate](https://codeclimate.com/github/at-shakil/rtime/badges/gpa.svg)](https://codeclimate.com/github/at-shakil/rtime)
+[![Issue Count](https://codeclimate.com/github/at-shakil/rtime/badges/issue_count.svg)](https://codeclimate.com/github/at-shakil/rtime)
 
 ## Summary
 
