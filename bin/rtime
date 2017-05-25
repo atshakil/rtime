@@ -3,28 +3,30 @@ require "thor"
 require "rtime"
 
 module RTime
+  # RTime command-line interface base class
   class CLI < Thor
-    class_option :night_only, aliases: ["-n"], type: :boolean,
+    class_option(
+      :night_only,
+      aliases: ["-n"], type: :boolean,
       desc: "Only generates timestamp between 20:00 - 06:00"
+    )
 
     desc "generate <date1> <date2> <coverage>", "Generates random timestamp"
     def generate date1, date2, coverage
       date_matcher = /^\d{4}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$/
       coverage_match = /^(?<coverage>\d|[1-9][0-9]|10{2})%$/.match coverage
-      unless date_matcher =~ date1 and date_matcher =~ date2 and coverage_match
-        puts <<~MESSAGE
-          Error: invalid argument!
-
-          Example: rtime gen 20170417 20170423 85%
-        MESSAGE
+      unless date_matcher =~ date1 && date_matcher =~ date2 && coverage_match
+        puts "Error: invalid argument!\n\n\
+Example: rtime gen 20170417 20170423 85%"
       end
 
-      timestamps = RTime::RTS.timestamps date1, date2,
-        coverage_match[:coverage].to_f/100, options
-      timestamps.each {|timestamp| puts "\n#{timestamp}"}
+      timestamps = RTime::RTS.timestamps(
+        date1, date2, coverage_match[:coverage].to_f / 100, options
+      )
+      timestamps.each { |timestamp| puts "\n#{timestamp}" }
     end
 
-    map ["gen", "g"] => :generate
+    map %W[gen g] => :generate
   end
 end
 

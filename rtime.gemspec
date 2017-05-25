@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "rtime/version"
@@ -9,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Tahmid Shakil"]
   spec.email         = ["at.shakil.92@gmail.com"]
 
-  spec.summary       = %q{RTime is a random timestamp generator}
+  spec.summary       = "RTime is a random timestamp generator"
   spec.homepage      = "https://github.com/at-shakil/rtime"
   spec.license       = "MIT"
 
@@ -31,4 +32,3 @@ Gem::Specification.new do |spec|
     spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0.8"
   end
 end
-
