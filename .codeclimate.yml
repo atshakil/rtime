@@ -3,3 +3,11 @@ engines:
     enabled: true
     channel: rubocop-0-48
 
+ratings:
+  paths:
+  - bin/**
+  - lib/**
+  - "**.rb"
+exclude_paths:
+  - test/**
+
