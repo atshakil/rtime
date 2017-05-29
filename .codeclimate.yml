@@ -2,6 +2,12 @@ engines:
   rubocop:
     enabled: true
     channel: rubocop-0-48
+  markdownlint:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  fixme:
+    enabled: true
 
 ratings:
   paths:
@@ -10,4 +16,3 @@ ratings:
   - "**.rb"
 exclude_paths:
   - test/**
-

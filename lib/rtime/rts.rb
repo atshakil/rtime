@@ -28,7 +28,7 @@ module RTime
           raise(Exception, "Date must be provided in YYYYMMDD format")
         end
 
-        group = match.named_captures
+        group = match.names.zip(match.captures).to_h
         year = group["year"].to_i
         month = group["month"].to_i
         day = group["day"].to_i

@@ -18,9 +18,10 @@ This app is intended to be used as a command-line utility.
 
 Installation is as simple as,
 
-    $ gem install rtime
+    gem install rtime
 
-If you eventually develop a taste for `rtime`'s tiny API, you may want to follow the steps below.
+If you eventually develop a taste for `rtime`'s tiny API,
+you may want to follow the steps below.
 
 Add this line to your application's Gemfile:
 
@@ -30,7 +31,7 @@ gem 'rtime'
 
 And then execute:
 
-    $ bundle
+    bundle
 
 ## Usage
 
