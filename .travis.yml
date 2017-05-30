@@ -1,13 +1,20 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.2.7
-  - 2.3.4
-  - 2.4.1
+- 2.2.7
+- 2.3.4
+- 2.4.1
 before_install: gem install bundler -v 1.15.1
 addons:
   code_climate:
     repo_token: 8f508f2041ed0b481b26eb1f3b62613cacc0c2052025c7161f418a262bbe2636
 after_success:
-  - bundle exec codeclimate-test-reporter
-
+- bundle exec codeclimate-test-reporter
+deploy:
+  provider: rubygems
+  api_key:
+    secure: SHDqKtYlS55txfMTkm3u4nP9Wol12Y1KIy+Uds5aTgq4n8v0mfj8n7a0GaXgD0Yz+loIac+DXIZan72BIYqFHhowYkO83HYQRqhUwgP5p/psn+58d/RkYwYZZLuSgZtS0AXahTmcjUOeGMDa/M1XGYuHnPTMTjB1chQ7k914GYDYpqKRH8V7JZKao+pa4a8qoXTZGpjLW+IPkZTHZONjN1XvE9GereFGpIubDWs0SFIimlg0MTD1OJJHFzbjATV9blF5nmtc/bBMhwCtywYHzNdUUz+IdW2GicQpZ+YsXDxF2vJ26Oo7XilHX/fQ9xLiJDE8w1xrw4hqUIC5Bb0C+CQeAwNOB9dJrHocEfr1nZnyprmYLUkj3LuvlJZ/pQcgjYEMV7leqfzoU+gW4fLEN/w9NjdQxRHztyJ73YVx6mC2kaTENB9pBevTwhReI1Xn/YLWZvu/vlLxAyKaa3yVjGDOiFKNi2Yp0nurpOQXCi79MSVA0wP9Hrps/umLmRXMCVMvV+Vdhx2Z6Gqo0oUb+AoqsKLfhx1EwKvCGKiI2l2niwZ8OL9RIVJEaNjYrA6BIdTQ0BBabv6PPPEdTkdMb7Cc5k9+O55piHUDnLsCM99llThCGqbkTXQdKOP8Fll6/RC4473lt6cBCKlWRv87iE/ltvNt4uxxaszGjR41Ylg=
+  gem: rtime
+  on:
+    tags: true
+    repo: at-shakil/rtime
