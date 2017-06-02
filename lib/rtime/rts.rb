@@ -12,8 +12,9 @@ module RTime
             (0..23).to_a.sample
           end
 
-        minute = (0..59).to_a.sample
-        second = (0..59).to_a.sample
+        time_unit_sample = (0..59).to_a.sample
+        minute = time_unit_sample
+        second = time_unit_sample
 
         [hour, minute, second]
       end
@@ -21,6 +22,8 @@ module RTime
       # Parses date from `YYYYMMDD` format
       #
       # Returns a time segment
+      #--
+      # TODO: investigate :reek:FeatureEnvy
       def _parse_date date
         match = /^(?<year>\d{4})(?<month>\d{2})(?<day>\d{2})$/.match date
 
@@ -42,19 +45,23 @@ module RTime
       end
 
       # Returns all the timestamp in a range
-      def _timestamps_in_range date1, date2, options
-        year, month, day = _parse_date date1
-        date1 = Time.new year, month, day
-        year, month, day = _parse_date date2
-        date2 = Time.new year, month, day
-        start_date, end_date = date1 < date2 ? [date1, date2] : [date2, date1]
+      #--
+      # TODO: investigate :reek:FeatureEnvy
+      def _timestamps_in_range date_range, options
+        start_date = Time.new(*_parse_date(date_range[:start]))
+        end_date = Time.new(*_parse_date(date_range[:end]))
+        start_date, end_date =
+          if start_date < end_date
+            [start_date, end_date]
+          else
+            [end_date, start_date]
+          end
         range = []
         tmp_date = start_date
-        while tmp_date <= end_date
 
-          hour, minute, second = _time_for(options)
+        while tmp_date <= end_date
           range.push Time.new(
-            tmp_date.year, tmp_date.month, tmp_date.day, hour, minute, second
+            tmp_date.year, tmp_date.month, tmp_date.day, *_time_for(options)
           )
           tmp_date += 60 * 60 * 24 # 1 day
         end
@@ -63,8 +70,8 @@ module RTime
       end
 
       # Returns a specified percentage of random timestamp in a range
-      def timestamps date1, date2, coverage, options = { night_only: false }
-        all_timestamps = _timestamps_in_range date1, date2, options
+      def timestamps date_range, coverage, options = { night_only: false }
+        all_timestamps = _timestamps_in_range date_range, options
         selection_count =
           _selections_for_coverage all_timestamps.count, coverage
         all_timestamps.sample(selection_count).sort

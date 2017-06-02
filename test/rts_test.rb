@@ -34,7 +34,9 @@ module RTime
     def test_assert_timestamps_in_range_returns_all_the_matching_timestamps
       range =
         RTime::RTS.send(
-          :_timestamps_in_range, "20170203", "20170129", night_only: false
+          :_timestamps_in_range,
+          { start: "20170203", end: "20170129" },
+          night_only: false
         )
       assert_instance_of Array, range
       assert_equal 6, range.count
@@ -46,7 +48,10 @@ module RTime
     end
 
     def test_assert_timestamps_provide_correct_timestamps_for_valid_arguments
-      timestamps = RTime::RTS.timestamps("20170203", "20170129", 0.85)
+      timestamps =
+        RTime::RTS.timestamps(
+          { start: "20170203", end: "20170129" }, 0.85
+        )
       assert_instance_of Array, timestamps
       assert_equal 5, timestamps.count
       timestamps.each { |timestamp| assert_instance_of Time, timestamp }

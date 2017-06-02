@@ -19,7 +19,9 @@ module RTime
 
       if date_matcher =~ date1 && date_matcher =~ date2 && coverage_match
         timestamps = RTime::RTS.timestamps(
-          date1, date2, coverage_match[:coverage].to_f / 100, options
+          { start: date1, end: date2 },
+          coverage_match[:coverage].to_f / 100,
+          options
         )
         timestamps.each { |timestamp| puts "\n#{timestamp}" }
       else
