@@ -2,6 +2,21 @@ require "test_helper"
 
 module RTime
   class RTSTest < Minitest::Test
+    extend Minitest::Spec::DSL
+
+    let(:time_segments) do
+      [
+        {
+          range: { start: "20170201", end: "20170130" },
+          days: [30, 31, 1], months: [1, 1, 2], night: false
+        },
+        {
+          range: { start: "20170130", end: "20170201" },
+          days: [30, 31, 1], months: [1, 1, 2], night: true
+        }
+      ]
+    end
+
     def test_assert_module_exists
       refute_nil RTime::RTS
     end
@@ -32,19 +47,21 @@ module RTime
     end
 
     def test_assert_timestamps_in_range_returns_all_the_matching_timestamps
-      range =
-        RTime::RTS.send(
-          :_timestamps_in_range,
-          { start: "20170203", end: "20170129" },
-          night_only: false
-        )
-      assert_instance_of Array, range
-      assert_equal 6, range.count
-      range.each { |timestamp| assert_instance_of Time, timestamp }
-      assert_equal 29, range[0].day
-      assert_equal 1, range[0].month
-      assert_equal 3, range[-1].day
-      assert_equal 2, range[-1].month
+      time_segments.each do |segment|
+        range =
+          RTime::RTS.send(
+            :_timestamps_in_range,
+            segment[:range],
+            night_only: segment[:night]
+          )
+        assert_instance_of Array, range
+        assert_equal segment[:days].count, range.count
+        range.each { |timestamp| assert_instance_of Time, timestamp }
+        segment[:days].each_with_index do |day, index|
+          assert_equal day, range[index].day
+          assert_equal segment[:months][index], range[index].month
+        end
+      end
     end
 
     def test_assert_timestamps_provide_correct_timestamps_for_valid_arguments
