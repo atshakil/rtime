@@ -20,6 +20,10 @@ Gem::Specification.new do |spec|
   spec.bindir        = "bin"
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+  spec.required_ruby_version = [">= 2.2.0"]
+  spec.extra_rdoc_files = ["README.md"]
+  spec.rdoc_options =
+    %w[-t RTime -m README.md -i lib/**/*.rb -N --markup markdown]
 
   spec.add_dependency "thor", "~> 0.19.4"
 

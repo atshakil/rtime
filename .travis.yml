@@ -4,7 +4,13 @@ rvm:
 - 2.2.7
 - 2.3.4
 - 2.4.1
-before_install: gem install bundler -v 1.15.1
+- ruby-head
+matrix:
+  allow_failures:
+  - rvm: ruby-head
+  fast_finish: true
+cache: bundler
+before_install: gem install bundler
 addons:
   code_climate:
     repo_token: 8f508f2041ed0b481b26eb1f3b62613cacc0c2052025c7161f418a262bbe2636
