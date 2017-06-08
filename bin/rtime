@@ -11,6 +11,10 @@ module RTime
       aliases: ["-n"], type: :boolean,
       desc: "Only generates timestamp between 20:00 - 06:00"
     )
+    class_option(
+      :version,
+      aliases: ["-v"], type: :boolean, desc: "Prints the version of rtime"
+    )
 
     desc "generate <date1> <date2> <coverage>", "Generates random timestamp"
     def generate date1, date2, coverage
@@ -30,7 +34,13 @@ Example: rtime gen 20170417 20170423 85%"
       end
     end
 
+    desc "", "Describe available commands"
+    def default
+      options[:version] ? puts(RTime::VERSION) : help
+    end
+
     map %W[gen g] => :generate
+    default_task :default
   end
 end
 
