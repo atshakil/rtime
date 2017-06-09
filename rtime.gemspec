@@ -25,12 +25,13 @@ Gem::Specification.new do |spec|
   spec.rdoc_options =
     %w[-t RTime -m README.md -i lib/**/*.rb -N --markup markdown]
 
-  spec.add_dependency "thor", "~> 0.19.4"
+  spec.add_dependency "thor", "~> 0.18"
 
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "simplecov", "~> 0.13"
+  spec.add_development_dependency "appraisal", "~> 2.2"
 
   if ENV["TRAVIS"]
     spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0.8"

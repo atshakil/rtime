@@ -5,6 +5,10 @@ rvm:
 - 2.3.4
 - 2.4.1
 - ruby-head
+gemfile:
+- gemfiles/thor_0.18.0.gemfile
+- gemfiles/thor_0.19.0.gemfile
+- gemfiles/thor_0.19.gemfile
 matrix:
   allow_failures:
   - rvm: ruby-head
