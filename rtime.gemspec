@@ -22,8 +22,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = [">= 2.2.0"]
   spec.extra_rdoc_files = ["README.md"]
-  spec.rdoc_options =
-    %w[-t RTime -m README.md -i lib/**/*.rb -N --markup markdown]
+  spec.rdoc_options = %w[-t RTime -m README.md -N --markup markdown]
 
   spec.add_dependency "thor", "~> 0.18"
 
