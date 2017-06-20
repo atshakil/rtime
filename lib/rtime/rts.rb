@@ -12,9 +12,9 @@ module RTime
             (0..23).to_a.sample
           end
 
-        time_unit_sample = (0..59).to_a.sample
-        minute = time_unit_sample
-        second = time_unit_sample
+        time_unit = (0..59).to_a
+        minute = time_unit.sample
+        second = time_unit.sample
 
         [hour, minute, second]
       end
