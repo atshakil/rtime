@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["at.shakil.92@gmail.com"]
 
   spec.summary       = "RTime is a random timestamp generator"
-  spec.homepage      = "https://github.com/at-shakil/rtime"
+  spec.homepage      = "https://github.com/atshakil/rtime"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -26,11 +26,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "thor", "~> 0.18"
 
-  spec.add_development_dependency "bundler", "~> 1.15"
-  spec.add_development_dependency "rake", "~> 12.0"
-  spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "simplecov", "~> 0.13"
   spec.add_development_dependency "appraisal", "~> 2.2"
+  spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "rake", "~> 12.0"
+  spec.add_development_dependency "simplecov", "~> 0.13"
 
   if ENV["TRAVIS"]
     spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0.8"

@@ -14,10 +14,10 @@ matrix:
   - rvm: ruby-head
   fast_finish: true
 cache: bundler
-before_install: gem install bundler
+before_install: gem install bundler -v 1.17.3
 addons:
   code_climate:
-    repo_token: 8f508f2041ed0b481b26eb1f3b62613cacc0c2052025c7161f418a262bbe2636
+    repo_token: 871d77a08038dae2afd2b97b8b0d7fe9c93d496fd68a48ba6ed2a31360a3464d
 after_success:
 - bundle exec codeclimate-test-reporter
 deploy:
@@ -27,4 +27,4 @@ deploy:
   gem: rtime
   on:
     tags: true
-    repo: at-shakil/rtime
+    repo: atshakil/rtime
